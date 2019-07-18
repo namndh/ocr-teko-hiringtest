@@ -9,6 +9,21 @@ def display_img(img):
 	cv2.imshow('img', img)
 	cv2.waitKey()
 
+def equalize(list1, list2):
+	len1 = len(list1)
+	len2 = len(list2)
+	differ = abs(len1-len2)
+	if len1 > len2:
+		for i in range(differ):
+			del list1[-1]
+	if len2 > len1:
+		for i in range(differ):
+			del list2[-1]
+	if len(list1) == len(list2):
+		return True
+	else:
+		return False
+
 img_search_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), "*.jpg")
 img_path = glob.glob(img_search_path)[0]
 print(img_path)
@@ -31,6 +46,7 @@ img = img[:,:int(img.shape[1]*0.5),:]
 # cv2.imshow('img',img)
 # cv2.waitKey()
 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+img1 = img.copy()
 # img = img < 200
 
 	
@@ -61,12 +77,22 @@ uppers = [y for y in range(H-1) if hist[y]<=th and hist[y+1]>th]
 lowers = [y for y in range(H-1) if hist[y]>th and hist[y+1]<=th]
 print(len(uppers), len(lowers))
 rotated = cv2.cvtColor(rotated, cv2.COLOR_GRAY2BGR)
+
+cv2.imwrite('result.png', rotated)
+rotated1 = rotated.copy()
+
+
 for y in uppers:
     cv2.line(rotated, (0,y), (W, y), (255,0,0), 1)
 
 for y in lowers:
     cv2.line(rotated, (0,y), (W, y), (0,255,0), 1)
 
-display_img(rotated)
+print(equalize(uppers,lowers))
+
+print(len(uppers), len(lowers))
+for idx,(yupper, ylower) in enumerate(zip(uppers, lowers)):
+	cv2.imwrite(os.path.join(os.path.abspath(os.path.dirname(__file__)), str(idx)+".png") ,img1.copy()[yupper-1:ylower+5,:])
+# display_img(rotated)
 
 # cv2.imwrite("result.png", rotated)
