@@ -56,44 +56,44 @@ img = cv2.imread(img_path)
 words = segment_words(img)
 for word in words:
 	display_image(word)
-# img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-# # display_image(img_gray)
-# # display_image(img_gray)
-# ret, thresh = cv2.threshold(img_gray,75,240,cv2.THRESH_BINARY)
-# thresh_cp = thresh.copy()
-# display_image(thresh)
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+# display_image(img_gray)
+# display_image(img_gray)
+ret, thresh = cv2.threshold(img_gray,75,240,cv2.THRESH_BINARY)
+thresh_cp = thresh.copy()
+display_image(thresh)
 
-# img1 = thresh.copy()
-# img2 = thresh.copy()
-# img3 = thresh.copy()
+img1 = thresh.copy()
+img2 = thresh.copy()
+img3 = thresh.copy()
 
-# results = list()
-# res = find_bounding_box(img1)
+results = list()
+res = find_bounding_box(img1)
 
-# for (c, _) in res:
-# 	(x,y,w,h) = cv2.boundingRect(c)
-# 	if w >= 5 and h >= 15:
-# 		cv2.rectangle(img1, (x,y), (x+w, y+h), (0,0,0), 3)
-# 		results.append((x,y,w,h))
-# display_image(img1)
-# res1 = find_bounding_box(img1)
-# result1 = list()
-# for idx, (c,_) in enumerate(res1):
-#     (x, y, w, h) = cv2.boundingRect(c)
-#     if w >= 10 and h >= 20:
-#         # idx += 1
-#         # if idx == 7:
-#         #     letter = img3[y:y+h, x:x+w]
-#         # else:
-#         #     letter = img3[y-5:y+h, x-5:x+w]
-#         # filename = os.path.join(folder_path, 'letter_' + str(idx) + '.png')
-#         # letters.append(filename)
-#         # cv2.imwrite(filename, letter)
-#         result1.append((x,y,w,h))
-#         # cv2.imwrite("../" + img_name + str(idx) +'.png', img3[y:y+h,x:x+w])
-#         cv2.rectangle(img2, (x,y), (x + w, y+h), (0,0,0) ,1)
+for (c, _) in res:
+	(x,y,w,h) = cv2.boundingRect(c)
+	if w >= 5 and h >= 15:
+		cv2.rectangle(img1, (x,y), (x+w, y+h), (0,0,0), 3)
+		results.append((x,y,w,h))
+display_image(img1)
+res1 = find_bounding_box(img1)
+result1 = list()
+for idx, (c,_) in enumerate(res1):
+    (x, y, w, h) = cv2.boundingRect(c)
+    if w >= 10 and h >= 20:
+        # idx += 1
+        # if idx == 7:
+        #     letter = img3[y:y+h, x:x+w]
+        # else:
+        #     letter = img3[y-5:y+h, x-5:x+w]
+        # filename = os.path.join(folder_path, 'letter_' + str(idx) + '.png')
+        # letters.append(filename)
+        # cv2.imwrite(filename, letter)
+        result1.append((x,y,w,h))
+        cv2.imwrite(img_name + str(idx) +'.png', img3[y:y+h,x:x+w])
+        cv2.rectangle(img2, (x,y), (x + w, y+h), (0,0,0) ,1)
 
-# display_image(img2)
+display_image(img2)
 # cv2.imwrite('segments_result.png', img2)
 # res2 = find_bounding_box(img2)
 # for (c,_) in res2:

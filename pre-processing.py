@@ -75,27 +75,27 @@ lines = list()
 print(len(uppers), len(lowers))
 for idx,(yupper, ylower) in enumerate(zip(uppers, lowers)):
 	cv2.imwrite(os.path.join(os.path.abspath(os.path.dirname(__file__)), str(idx)+".png") ,img1.copy()[yupper-1:ylower+7,:])
-	lines.append(cv2.cvtColor(img1.copy()[yupper-1:ylower+7,:], cv2.COLOR_BGR2RGB))
+	# lines.append(cv2.cvtColor(img1.copy()[yupper-1:ylower+7,:], cv2.COLOR_BGR2RGB))
 
-model_path = "./crnn_pytorch/data/crnn.pth"
-alphabet = '0123456789abcdefghijklmnopqrstuvwxyz'
-model = models.crnn.CRNN(31,1,37,256)
-if torch.cuda.is_available():
-	model = models.cuda()
-print("Loading CRNN...")
-model.load_state_dict(torch.load(model_path))
+# model_path = "./crnn_pytorch/data/crnn.pth"
+# alphabet = '0123456789abcdefghijklmnopqrstuvwxyz'
+# model = models.crnn.CRNN(31,1,37,256)
+# if torch.cuda.is_available():
+# 	model = models.cuda()
+# print("Loading CRNN...")
+# model.load_state_dict(torch.load(model_path))
  
-converter = utils.strLabelConverter(alphabet)
-transformer = dataset.resizeNormalize((100,32))
-for idx, line in enumerate(lines):
-	words = segment_words(line)
-	for word in words:
-		word_pil = Image.fromarray(word)
-		word = transformer(word_pil)
-		# word = Variable(word)
-		if torch.cuda.is_available():
-			word = word.cuda()
-		word = word.view(1, *word.size())
-		image = Variable(image)
+# converter = utils.strLabelConverter(alphabet)
+# transformer = dataset.resizeNormalize((100,32))
+# for idx, line in enumerate(lines):
+# 	words = segment_words(line)
+# 	for word in words:
+# 		word_pil = Image.fromarray(word)
+# 		word = transformer(word_pil)
+# 		# word = Variable(word)
+# 		if torch.cuda.is_available():
+# 			word = word.cuda()
+# 		word = word.view(1, *word.size())
+# 		image = Variable(image)
 
 
