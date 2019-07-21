@@ -1,2 +1,4 @@
 crnn_pytorch/
 crnn_pytorch/*
+.vscode/
+.vscode/*
