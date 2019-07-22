@@ -6,4 +6,7 @@
 - ```chmod 777 prepare.sh```
 - ```./prepare.sh```
 ### Usage:
-- ```python text_extractor.py```
+- Using CRNN to extract text from image: ```python text_extractor.py```
+- Using Tesseract from Google to extract text from image: 
+	- ```sudo apt-get install tesseract-ocr```
+	- ```python tesseract.py```
