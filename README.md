@@ -6,11 +6,12 @@
 - ```chmod 777 prepare.sh```
 - ```./prepare.sh```
 
-Using [CRNN model](https://arxiv.org/pdf/1507.05717.pdf) implemented in Pytorch
+Using [CRNN model](https://arxiv.org/pdf/1507.05717.pdf) implemented in:
+	- Pytorch by [/meijieru](https://github.com/meijieru/crnn.pytorch)
+	- Keras by [/kurapan](https://github.com/kurapan/CRNN
 
 ### Usage:
-- Using CRNN to extract text from image: 
-	- ```python text_extractor.py```
-- Using Tesseract from Google to extract text from image: 
-	- ```sudo apt-get install tesseract-ocr```
-	- ```python tesseract.py```
+- Using CRNN in Pytorch to extract text from image: 
+	- ```python extract_texts_pytorch.py ```
+- Using CRNN in Keras to extract text from given image:
+	- ```python extract_texts_keras.py```
