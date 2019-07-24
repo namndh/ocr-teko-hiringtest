@@ -40,7 +40,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 # parser.add_argument('--dropout_rate', type=float, default=0.25)
 # cfg = parser.parse_args()
 
-arguments = {'model_path': '/home/namnguyen/Downloads/prediction_model.hdf5', 
+arguments = {'model_path': './prediction_model.hdf5', 
              'data_path':'',
              'gpus':[0],
              'characters' : '0123456789'+string.ascii_lowercase+'-',
