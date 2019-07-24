@@ -12,7 +12,7 @@ Using [CRNN model](https://arxiv.org/pdf/1507.05717.pdf) implemented in:
 
 ### Usage:
 - Active environment
-- Using CRNN in Pytorch to extract text from image: 
+- Run following command to use CRNN in Pytorch to extract text from given image: 
 	- ```python extract_texts_pytorch.py ```
-- Using CRNN in Keras to extract text from given image:
+- Run following command to use CRNN in Keras to extract text from given image:
 	- ```python extract_texts_keras.py```
