@@ -2,3 +2,5 @@ crnn_pytorch/
 crnn_pytorch/*
 .vscode/
 .vscode/*
+__pycache__/
+__pycache__/*
