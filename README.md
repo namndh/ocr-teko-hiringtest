@@ -7,8 +7,8 @@
 - ```./prepare.sh```
 
 Using [CRNN model](https://arxiv.org/pdf/1507.05717.pdf) implemented in:
-	- Pytorch by [/meijieru](https://github.com/meijieru/crnn.pytorch)
-	- Keras by [/kurapan](https://github.com/kurapan/CRNN)
+- Pytorch by [/meijieru](https://github.com/meijieru/crnn.pytorch)
+- Keras by [/kurapan](https://github.com/kurapan/CRNN)
 
 ### Usage:
 - Active environment
