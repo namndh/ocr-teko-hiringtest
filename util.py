@@ -5,8 +5,34 @@ import numpy as np
 from PIL import Image
 
 
-img_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '13.png')
-img_name = '13'
+# img_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '13.png')
+# img_name = '13'
+
+labels_p1 = [['20000', 'LEAGUES', 'UNDER', 'THE', 'SEA'], 
+          ['choking', 'but', 'he', 'managed',
+          	'to', 'shout', '\"Help!'], ['Help!\"'],
+	['I', 'was', 'stunned', 'to', 'hear', 'these', 'words'],
+	['screamed', 'out', 'in', 'French.', 'So', 'I', 'did', 'have', 'a','fel-'],
+	['-low','countryman', 'on', 'board', 'them', 'all!', 'And', 'in'],
+	['his', 'comment', 'of', 'death,', 'he', 'had', 'forgetten', 'the'],
+	['strange', 'speech', 'he', 'had', 'used', 'on', 'board.', 'He', 'had'],
+	['gasped', 'his', 'dying', 'words', 'in', 'his', 'native', 'lan-'],
+	['guage.'],
+	['But', 'the', 'poor', 'man', 'was', 'done', 'for.', 'Nothing'],
+	['could', 'save', 'him', 'from', 'such', 'a', 'powerful', 'grip.']
+	['Nevertheless,', 'Captain', 'Nemo', 'hurled', 'himself'],
+	['at', 'the', 'squid', 'and', 'with', 'repeated', 'blows', 'of', 'his'],
+	['axe,', 'cut', 'off', 'seven', 'of', 'its', 'tentacles.', 'But', 'just', 'as'],
+	['he', 'rushed', 'at', 'the', 'eighth-the', 'one', 'crushing'],
+	['the', 'sailor-the', 'squid', 'let', 'out', 'a', 'spray', 'of', 'black'],
+	['inks.', 'We', 'were', 'all', 'blinded', 'by', 'it', 'for', 'several'],
+	['moments.', 'When', 'the', 'spray', 'cleared,', 'the', 'squid'],
+	['had', 'disappeared,' 'and', 'with', 'it,', 'the', 'unfortunate'],
+	['sailor!'],
+	[ 'Meanwhile,' 'we', 'were', 'attacking', 'the', 'rest', 'of'],
+	['206']
+	]
+labels_p2 = [['Captain', 'Nemo','Attacks', 'the', 'Squid.']]
 def display_image(img):
 	cv2.imshow('img', img)
 	cv2.waitKey()
@@ -107,3 +133,5 @@ def extract_lines(img):
 			img1.copy()[yupper-1:ylower+7, :], cv2.COLOR_GRAY2RGB))
 	
 	return lines
+
+# def evaluate()
