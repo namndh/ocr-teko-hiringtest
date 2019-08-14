@@ -19,7 +19,7 @@ labels_p1 = [['20000', 'LEAGUES', 'UNDER', 'THE', 'SEA'],
 	['gasped', 'his', 'dying', 'words', 'in', 'his', 'native', 'lan-'],
 	['guage.'],
 	['But', 'the', 'poor', 'man', 'was', 'done', 'for.', 'Nothing'],
-	['could', 'save', 'him', 'from', 'such', 'a', 'powerful', 'grip.']
+	['could', 'save', 'him', 'from', 'such', 'a', 'powerful', 'grip.'],
 	['Nevertheless,', 'Captain', 'Nemo', 'hurled', 'himself'],
 	['at', 'the', 'squid', 'and', 'with', 'repeated', 'blows', 'of', 'his'],
 	['axe,', 'cut', 'off', 'seven', 'of', 'its', 'tentacles.', 'But', 'just', 'as'],
@@ -134,4 +134,15 @@ def extract_lines(img):
 	
 	return lines
 
-# def evaluate()
+def evaluate(line_idx, predicted_line, predicted_true):
+	if line_idx > len(labels_p1) - 1:
+		pass
+	else:
+		label_line = labels_p1[line_idx]
+		equalize(predicted_line, label_line)
+		for pair in zip(predicted_line, label_line):
+			if pair[0] == pair[1]:
+				predicted_true += 1
+		return predicted_true
+
+
