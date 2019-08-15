@@ -16,6 +16,7 @@ from CRNN_models_keras import CRNN, CRNN_STN
 from utils_keras import pad_image, resize_image, create_result_subdir
 from STN.spatial_transformer import SpatialTransformer
 
+RESULT_FILE = 'results/result_keras.txt'
 
 class Namespace(object):
     def __init__(self, initial_data):
@@ -23,22 +24,6 @@ class Namespace(object):
             setattr(self, key, initial_data[key])
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-
-# parser = argparse.ArgumentParser()
-# parser.add_argument('--model_path', type=str, default='')
-# parser.add_argument('--data_path', type=str, default='')
-# parser.add_argument('--gpus', type=int, nargs='*', default=[0])
-# parser.add_argument('--characters', type=str, default='0123456789'+string.ascii_lowercase+'-')
-# parser.add_argument('--label_len', type=int, default=16)
-# parser.add_argument('--nb_channels', type=int, default=1)
-# parser.add_argument('--width', type=int, default=200)
-# parser.add_argument('--height', type=int, default=31)
-# parser.add_argument('--model', type=str, default='CRNN_STN', choices=['CRNN_STN', 'CRNN'])
-# parser.add_argument('--conv_filter_size', type=int, nargs=7, default=[64, 128, 256, 256, 512, 512, 512])
-# parser.add_argument('--lstm_nb_units', type=int, nargs=2, default=[128, 128])
-# parser.add_argument('--timesteps', type=int, default=50)
-# parser.add_argument('--dropout_rate', type=float, default=0.25)
-# cfg = parser.parse_args()
 
 arguments = {'model_path': './prediction_model.hdf5', 
              'data_path':'',
@@ -137,4 +122,10 @@ print(''.join(words_p2) + '\n\n')
 print("Model accuracy is {:.2f} %".format((p1_predicted_true+p2_predicted_true)/num_of_words_gt*100))
 
 
-    
+with open(RESULT_FILE,'w+') as f:
+    f.write("Page 1:\n")
+    f.write(''.join(words_p1)+'\n\n')
+    f.write("Page 2:\n")
+    f.write(''.join(words_p2) + '\n\n')
+
+    f.write("Model accuracy is {:.2f} %".format((p1_predicted_true+p2_predicted_true)/num_of_words_gt*100))

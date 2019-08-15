@@ -13,6 +13,8 @@ from crnn_pytorch import utils
 import crnn_pytorch.models.crnn as crnn
 from crnn_pytorch import dataset
 
+RESULT_FILE = 'results/result_pytorch.txt'
+
 def load_crnn():
 	model_path = "./crnn_pytorch/data/crnn.pth"
 	alphabet = '0123456789abcdefghijklmnopqrstuvwxyz'
@@ -95,4 +97,10 @@ print(''.join(words_p2) + '\n\n')
 
 print("Model accuracy is {:.2f} %".format((p1_predicted_true+p2_predicted_true)/num_of_words_gt*100))
 
+with open(RESULT_FILE,'w+') as f:
+    f.write("Page 1:\n")
+    f.write(''.join(words_p1)+'\n\n')
+    f.write("Page 2:\n")
+    f.write(''.join(words_p2) + '\n\n')
 
+    f.write("Model accuracy is {:.2f} %".format((p1_predicted_true+p2_predicted_true)/num_of_words_gt*100))
